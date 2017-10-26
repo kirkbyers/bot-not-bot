@@ -4,6 +4,20 @@ An app for crowd sourcing data classification
 
 ## Roadmap
 
+- Create user registration/login
+  - Email verification
+  - token management
+  - password storage
+  - login
+
+- Data import
+
+- UI
+  - Tinder for data
+
+- Serve Users data to "tinderize"
+
+
 ## ENV Vars
 
 ### bonb
