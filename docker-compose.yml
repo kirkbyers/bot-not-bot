@@ -15,5 +15,7 @@ services:
   bonb-mongo:
     restart: always
     image: mongo
+    ports:
+     - 27017:27017
     volumes:
       - ./vol/bonb-mongo:/data/db
