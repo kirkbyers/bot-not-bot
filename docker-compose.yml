@@ -9,8 +9,8 @@ services:
       - bonb-mongo
     ports:
       - 3000:3000
-    env_file:
-      - hermes/hermes.env
+    volumes:
+      - .:/app
   
   bonb-mongo:
     restart: always
