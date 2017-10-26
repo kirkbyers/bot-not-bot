@@ -1,5 +1,7 @@
-const tweetToDoc = require('./tweet-to-doc');
+const dataToDoc = require('./data-to-doc');
+const getClassificationOptions = require('./get-classification-options');
 
 module.exports = {
-  tweetToDoc,
+  dataToDoc,
+  getClassificationOptions,
 };

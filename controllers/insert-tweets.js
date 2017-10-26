@@ -1,9 +1,10 @@
 const { query } = require('../db');
-const { tweetToDoc } = require('../utils');
+const { dataToDoc } = require('../utils');
 
+// Insert many tweets
 async function insertTweets(tweets) {
   try {
-    const insertDocs = tweets.map(tweet => tweetToDoc(tweet));
+    const insertDocs = tweets.map(tweet => dataToDoc(tweet));
     const insert = await query('bonb', async col => col.insertMany(insertDocs));
     return insert;
   } catch (err) {

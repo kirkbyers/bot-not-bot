@@ -1,5 +1,6 @@
 const { query } = '../db';
 
+// Add a response
 async function addResponse(docId, response) {
   try {
     const doc = await query('bonb', async col => col.findOne({ _id: docId }));
