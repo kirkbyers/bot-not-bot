@@ -6,10 +6,12 @@ async function dbQuerry(collectionName = 'test', query) {
   try {
     const db = await MongoClient.connect(connectionUrl);
     const col = await db.collection(collectionName);
-    await query(col);
+    const results = await query(col);
     db.close();
+    return results;
   } catch (err) {
     console.log(`There was an err with your query: ${err}`);
+    return null;
   }
 }
 
