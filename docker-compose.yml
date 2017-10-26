@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+
+  bonb:
+    build: .
+    command: npm start
+    depends_on:
+      - bonb-mongo
+    ports:
+      - 3000:3000
+    env_file:
+      - hermes/hermes.env
+  
+  bonb-mongo:
+    restart: always
+    image: mongo
+    volumes:
+      - ./vol/bonb-mongo:/data/db
