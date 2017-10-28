@@ -1,0 +1,26 @@
+const express = require('express');
+
+const { query } = require('../db');
+const { addUser, sendMessage } = require('../controllers');
+const { createLoginLink } = require('../utils');
+
+const router = express.Router();
+
+router.post('/login', async (req, res) => {
+  const { email } = req.body;
+  try {
+    const user = await query('users', col => col.findOne({ email }));
+    const url = createLoginLink(user.token);
+    await sendMessage(email, 'Login Magic Link', `
+  <p>Howdy</p>
+  <p>A new login magic link was requested for this email. If this was not you, please contact us.</p>
+  <p>Please visit <a href="${url}" target="_blank">${url}</a> to login.</p>
+  `);
+  } catch (err) {
+    console.log(err);
+    await addUser(email);
+  }
+  res.send('Login email sent');
+});
+
+module.exports = router;
