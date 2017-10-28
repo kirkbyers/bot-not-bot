@@ -1,7 +1,7 @@
-const { createTestAccount } = require('./create-test-transport');
 const { createTransport } = require('./create-transport');
+const { sendMessage } = require('./send-message');
 
 module.exports = {
-  createTestAccount,
   createTransport,
+  sendMessage,
 };

@@ -2,3 +2,5 @@ node_modules
 .config
 vol
 secret.env
+.npm
+.ash_history

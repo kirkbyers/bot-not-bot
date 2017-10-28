@@ -1,8 +1,7 @@
-const { createTestTransport } = require('./create-test-transport');
 const { createTransport } = require('./create-transport');
 
 async function sendMessage(to, subject, message) {
-  const transporter = process.env.NODE_ENV !== 'development' ? await createTestTransport() : await createTransport();
+  const transporter = await createTransport();
   if (transporter.error) {
     return { error: transporter.error };
   }
