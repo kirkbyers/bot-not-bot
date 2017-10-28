@@ -1,5 +1,5 @@
-const insertTweets = require('./insert-tweets');
+const { insertData } = require('./data');
 
 module.exports = {
-  insertTweets,
+  insertData,
 };

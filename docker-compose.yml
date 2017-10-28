@@ -11,6 +11,8 @@ services:
       - 3000:3000
     volumes:
       - .:/app
+    env_file:
+      - secret.env
   
   bonb-mongo:
     restart: always
