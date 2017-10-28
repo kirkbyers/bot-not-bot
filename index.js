@@ -1,7 +1,9 @@
 const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 
+const { setAuthCookies } = require('./middleware');
 const index = require('./routes');
 
 const app = express();
@@ -17,6 +19,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // parse application/json
 app.use(bodyParser.json());
+
+// parse cookeies
+app.use(cookieParser(process.env.COOKIE_SECRET));
+
+// Check for auth querystring
+app.use(setAuthCookies);
 
 // Route
 app.use('/', index);
