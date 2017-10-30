@@ -8,6 +8,7 @@ async function addUser(userEmail) {
   };
   const token = await createUserToken(user);
   user.token = token;
+  user.responses = {};
   await query('users', col => col.insertOne(user));
   const url = `${process.env.BASE_URL}?auth=${token}`;
   await sendMessage(userEmail, 'Help Us Classify Data', `
