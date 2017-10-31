@@ -5,7 +5,7 @@ async function serveUserData(email) {
   const user = await getUserByEmail(email);
   const dataCount = await getDataCount('bonb');
   const findProcessedId = (user.startingIndex + user.responsesCount) % dataCount;
-  return getDataByProcessedId(findProcessedId);
+  return user.responsesCount < dataCount ? getDataByProcessedId(findProcessedId) : null;
 }
 
 module.export = serveUserData;
