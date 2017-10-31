@@ -14,4 +14,4 @@ async function recordUserResponse(processedId, userEmail, response) {
   ));
 }
 
-exports.module = recordUserResponse;
+module.exports = recordUserResponse;

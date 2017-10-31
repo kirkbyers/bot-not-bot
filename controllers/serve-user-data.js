@@ -8,4 +8,4 @@ async function serveUserData(email) {
   return user.responsesCount < dataCount ? getDataByProcessedId(findProcessedId) : null;
 }
 
-module.export = serveUserData;
+module.exports = serveUserData;
