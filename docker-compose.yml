@@ -13,6 +13,8 @@ services:
       - .:/app
     env_file:
       - secret.env
+    environment:
+      - IMPORT_FILE_PATH=bot_notbot.csv
   
   bonb-mongo:
     restart: always

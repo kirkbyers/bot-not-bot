@@ -1,4 +1,4 @@
-const { insertData } = require('./data');
+const { insertData, importFromCsv } = require('./data');
 const { sendMessage } = require('./emails');
 const {
   addUser, createUserToken, getUserByEmail, validateUserToken,
@@ -11,6 +11,7 @@ module.exports = {
   addUser,
   createUserToken,
   getUserByEmail,
+  importFromCsv,
   insertData,
   recordUserResponse,
   sendMessage,

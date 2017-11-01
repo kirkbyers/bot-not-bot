@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser');
 const { setAuthCookies } = require('./middleware');
 const apiIndex = require('./routes');
 const { uiApp } = require('./ui-server-side');
+const { fileImport } = require('./db');
 
 const app = express();
 
@@ -40,6 +41,12 @@ uiApp.prepare()
   .catch((err) => {
     console.log(err.stack);
   });
+
+// Add records to DB
+if (process.env.IMPORT_FILE_PATH) {
+  fileImport(process.env.IMPORT_FILE_PATH)
+    .catch(err => console.log(err));
+}
 
 // Listen
 const port = process.env.PORT || 3000;
