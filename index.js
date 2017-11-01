@@ -4,7 +4,8 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 
 const { setAuthCookies } = require('./middleware');
-const index = require('./routes');
+const apiIndex = require('./routes');
+const { uiApp } = require('./ui-server-side');
 
 const app = express();
 
@@ -27,7 +28,18 @@ app.use(cookieParser(process.env.COOKIE_SECRET));
 app.use(setAuthCookies);
 
 // Route
-app.use('/', index);
+app.use('/', apiIndex);
+
+// UI SSR
+const uiHandler = uiApp.getRequestHandler();
+
+uiApp.prepare()
+  .then(() => {
+    app.get('*', (req, res) => uiHandler(req, res));
+  })
+  .catch((err) => {
+    console.log(err.stack);
+  });
 
 // Listen
 const port = process.env.PORT || 3000;

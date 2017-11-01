@@ -4,3 +4,4 @@ vol
 secret.env
 .npm
 .ash_history
+.next
