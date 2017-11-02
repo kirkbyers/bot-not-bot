@@ -3,8 +3,7 @@ const { validateUserToken } = require('../controllers');
 
 function authenticateRoute(req, res, next) {
   if (!req.signedCookies.auth) {
-    res.status(401).json('Login needed');
-    return next();
+    return res.status(401).json('Login needed');
   }
   if (validateUserToken(req.signedCookies.auth)) {
     const user = jwt.decode(req.signedCookies.auth);
