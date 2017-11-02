@@ -5,7 +5,8 @@ const { serveUserData, recordUserResponse } = require('../controllers');
 const router = express.Router();
 
 router.get('/serve', async (req, res) => {
-  const data = serveUserData(req.user.email);
+  const data = await serveUserData(req.user.email);
+  console.log(`SERVING: ${data}`);
   res.json(data);
 });
 
