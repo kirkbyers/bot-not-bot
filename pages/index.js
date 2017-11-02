@@ -1,9 +1,9 @@
-const React = require('react');
-// const Link = require('next/link');
+import React from 'react';
+import Typography from 'material-ui/Typography';
 
 const Index = () => (
   <div>
-    <p>Hello Next.js</p>
+    <Typography type="title">Hello Next.js</Typography>
   </div>
 );
 

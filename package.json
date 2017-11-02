@@ -15,14 +15,19 @@
     "cookie-parser": "^1.4.3",
     "express": "^4.16.2",
     "fast-csv": "^2.4.1",
+    "install": "^0.10.1",
     "isomorphic-unfetch": "^2.0.0",
     "jsonwebtoken": "^8.1.0",
+    "material-ui": "^1.0.0-beta.19",
+    "material-ui-icons": "^1.0.0-beta.17",
     "mongodb": "^2.2.33",
     "morgan": "^1.9.0",
     "next": "^4.1.4",
     "nodemailer": "^4.3.1",
+    "npm": "^5.5.1",
     "react": "^16.0.0",
-    "react-dom": "^16.0.0"
+    "react-dom": "^16.0.0",
+    "styled-jsx": "^2.1.2"
   },
   "devDependencies": {
     "eslint": "^4.9.0",
