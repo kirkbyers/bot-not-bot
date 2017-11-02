@@ -17,7 +17,6 @@ router.post('/login', async (req, res) => {
   <p>Please visit <a href="${url}" target="_blank">${url}</a> to login.</p>
   `);
   } catch (err) {
-    console.log(err);
     await addUser(email);
   }
   res.send('Login email sent');

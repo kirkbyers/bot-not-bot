@@ -11,7 +11,7 @@ function authenticateRoute(req, res, next) {
     return next();
   }
   res.clearCookie('auth');
-  return res.status(401).send('Login needed');
+  return res.status(401).send('Login outdated');
 }
 
 module.exports = authenticateRoute;
