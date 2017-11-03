@@ -33,17 +33,23 @@ class RegisterForm extends React.Component {
 
   render() {
     return (
-      <Grid container>
+      <Grid container justify="center" alignContent="center">
         <Grid item xs={10}>
           {!this.state.loginSent &&
-            <form onSubmit={this.handleSubmit}>
-              <TextField
-                id="email"
-                label="Email Address"
-                value={this.state.email}
-                onChange={this.handleInputChange}
-              />
-            </form>
+            <Grid container>
+              <Grid item xs={12}>
+                <Typography type="headline">Sign up to help us label data</Typography>
+                <form onSubmit={this.handleSubmit}>
+                  <TextField
+                    id="email"
+                    label="Email Address"
+                    value={this.state.email}
+                    onChange={this.handleInputChange}
+                    fullWidth
+                  />
+                </form>
+              </Grid>
+            </Grid>
           }
           {this.state.loginSent &&
             <Typography type="body1">

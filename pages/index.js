@@ -28,7 +28,7 @@ class IndexPage extends React.Component {
 
   handleClassification(classificationString) {
     return async () => {
-      const result = await fetch(`/api/${this.props.data.processedId}`, {
+      const result = await fetch(`/api/${this.state.data.processedId}`, {
         method: 'POST',
         body: JSON.stringify({ response: classificationString }),
         credentials: 'include',

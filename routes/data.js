@@ -6,8 +6,13 @@ const { authenticateRoutes } = require('../middleware');
 const router = express.Router();
 
 router.get('/serve', authenticateRoutes, async (req, res) => {
-  const data = await serveUserData(req.user.email);
-  res.json(data);
+  try {
+    const data = await serveUserData(req.user.email);
+    res.json(data);
+  } catch (err) {
+    res.clearCookie('auth');
+    res.status(500).json('Something unexpected happened');
+  }
 });
 
 router.post('/:processedId', authenticateRoutes, async (req, res) => {
