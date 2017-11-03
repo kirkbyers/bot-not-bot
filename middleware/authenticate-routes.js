@@ -2,11 +2,13 @@ const jwt = require('jsonwebtoken');
 const { validateUserToken } = require('../controllers');
 
 function authenticateRoute(req, res, next) {
-  if (!req.signedCookies.auth) {
+  console.log(req.signedCookies.auth, req.headers.auth);
+  if (!req.signedCookies.auth && !req.headers.auth) {
     return res.status(401).json('Login needed');
   }
-  if (validateUserToken(req.signedCookies.auth)) {
-    const user = jwt.decode(req.signedCookies.auth);
+  const authToken = req.signedCookies.auth || req.headers.auth;
+  if (validateUserToken(authToken)) {
+    const user = jwt.decode(authToken);
     req.user = user;
     return next();
   }
