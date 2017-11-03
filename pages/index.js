@@ -1,6 +1,5 @@
 import React from 'react';
 import fetch from 'isomorphic-unfetch';
-import Typography from 'material-ui/Typography';
 
 import { DisplayTweetComponent, RegisterFormComponent } from '../components';
 
@@ -21,12 +20,31 @@ class IndexPage extends React.Component {
     };
   }
 
+  constructor(props) {
+    super(props);
+    this.state = { data: props.data };
+    this.handleClassification = this.handleClassification.bind(this);
+  }
+
+  handleClassification(classificationString) {
+    return async () => {
+      const result = await fetch(`/api/${this.props.data.processedId}`, {
+        method: 'POST',
+        body: JSON.stringify({ response: classificationString }),
+        credentials: 'include',
+        headers: { 'Content-Type': 'application/json' },
+      });
+      const resultJson = await result.json();
+      this.setState(() => ({ data: resultJson }));
+    };
+  }
+
   render() {
-    const { data, status } = this.props;
-    console.log(data);
+    const { status } = this.props;
+    const { data } = this.state;
     return (
       <div>
-        {status === 200 && <DisplayTweetComponent data={data} />}
+        {status === 200 && <DisplayTweetComponent data={data} handleButtonClick={this.handleClassification} />}
         {status !== 200 && <RegisterFormComponent />}
       </div>
     );

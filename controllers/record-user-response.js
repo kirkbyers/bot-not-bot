@@ -9,7 +9,7 @@ async function recordUserResponse(processedId, userEmail, response) {
     { $set: { [userResponsesString]: response }, $inc: { responsesCount: 1 } },
   ));
   await query('bonb', async col => col.findOneAndUpdate(
-    { processedId },
+    { processedId: Number(processedId) },
     { $inc: { [dataResponseString]: 1 } },
   ));
 }

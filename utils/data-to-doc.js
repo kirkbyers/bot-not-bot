@@ -2,9 +2,11 @@ const getClassificationOptions = require('./get-classification-options');
 
 function dataToDoc(dataEntry, processedId) {
   const optionsArray = getClassificationOptions();
-  const addFields = {};
+  const addFields = {
+    responses: {},
+  };
   optionsArray.forEach((option) => {
-    addFields[option] = 0;
+    addFields.responses[option] = 0;
   });
   if (processedId) {
     addFields.processedId = processedId;

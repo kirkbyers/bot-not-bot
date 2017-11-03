@@ -2,7 +2,6 @@ const jwt = require('jsonwebtoken');
 const { validateUserToken } = require('../controllers');
 
 function authenticateRoute(req, res, next) {
-  console.log(req.signedCookies.auth, req.headers.auth);
   if (!req.signedCookies.auth && !req.headers.auth) {
     return res.status(401).json('Login needed');
   }

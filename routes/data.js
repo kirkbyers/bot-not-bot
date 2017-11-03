@@ -12,7 +12,7 @@ router.get('/serve', authenticateRoutes, async (req, res) => {
 
 router.post('/:processedId', authenticateRoutes, async (req, res) => {
   await recordUserResponse(req.params.processedId, req.user.email, req.body.response);
-  const newData = serveUserData(req.user.email);
+  const newData = await serveUserData(req.user.email);
   res.json(newData);
 });
 
