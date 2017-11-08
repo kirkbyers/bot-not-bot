@@ -5,6 +5,7 @@ function setAuthCookies(req, res, next) {
     // TODO: verify auth token query param
     if (validateUserToken(req.query.auth)) {
       res.cookie('auth', req.query.auth, { signed: true });
+      req.headers.auth = req.query.auth;
     }
   }
   next();

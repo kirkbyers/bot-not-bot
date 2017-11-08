@@ -5,7 +5,8 @@ import { DisplayTweetComponent, RegisterFormComponent } from '../components';
 
 class IndexPage extends React.Component {
   static async getInitialProps({ req }) {
-    const response = await fetch(`${req.protocol}://${req.get('Host')}/api/serve`, {
+    const query = req.query.auth ? `?auth=${req.query.auth}` : '';
+    const response = await fetch(`${req.protocol}://${req.get('Host')}/api/serve${query}`, {
       credentials: 'include',
       method: 'GET',
       headers: {

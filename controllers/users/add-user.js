@@ -14,7 +14,7 @@ async function addUser(userEmail) {
   user.responsesCount = 0;
   user.startingIndex = randomInt(0, dataDocCount);
   await query('users', col => col.insertOne(user));
-  const url = `${process.env.BASE_URL}?auth=${token}`;
+  const url = encodeURI(`${process.env.BASE_URL}?auth=${token}`);
   await sendMessage(userEmail, 'Help Us Classify Data', `
   <p>Howdy!</p>
   <p style="text-align: center">Help up classify data by visiting <a href="${url}" target="_blank">${url}</a>.</p>
