@@ -8,7 +8,8 @@ services:
     depends_on:
       - bonb-mongo
     ports:
-      - 3000:3000
+      - 80:3000
+      - 443:3000
     volumes:
       - .:/app
     env_file:
