@@ -1,6 +1,6 @@
 const { MongoClient } = require('mongodb');
 
-const connectionUrl = 'mongodb://bonb-mongo:27017/bonb';
+const connectionUrl = process.env.MONGO_CONNECTION || 'mongodb://bonb-mongo:27017/bonb';
 
 async function query(collectionName = 'test', dbQuery) {
   try {
