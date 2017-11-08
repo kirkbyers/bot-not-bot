@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+
+  bonb:
+    build: .
+    command: npm start
+    depends_on:
+      - bonb-mongo
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/app
+    env_file:
+      - prod.env
+  
+  bonb-mongo:
+    restart: always
+    image: mongo
+    ports:
+     - 27017:27017
+    volumes:
+      - ./vol/bonb-mongo:/data/db
