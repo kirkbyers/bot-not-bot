@@ -1,7 +1,7 @@
 node_modules
 .config
 vol
-secret.env
+*.env
 .npm
 .ash_history
 .next
