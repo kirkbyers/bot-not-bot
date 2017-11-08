@@ -18,8 +18,6 @@ An app for crowd sourcing data classification
 
 - Deploy demo instance
 
-- Support non "Bot/Not Bot" labels
-
 - Support multi-labels 
 
 - Support other email strategies
@@ -42,10 +40,6 @@ An app for crowd sourcing data classification
 `IMPORT_FILE_PATH`: File path from root to csv to import
 
 <!-- `CLASSIFICATION_OPTS`: comma separated labels for users to classify data -->
-
-### secret.env
-
-Create a file named "secret.env" in the root with the following environment variables set
 
 `MAIL_PASS`: Gmail password
 
