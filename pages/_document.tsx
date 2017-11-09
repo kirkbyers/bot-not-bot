@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import Document, { Head, Main, NextScript } from 'next/document';
 import JssProvider from 'react-jss/lib/JssProvider';
 import { getContext } from '../components';
@@ -12,7 +12,7 @@ class MyDocument extends Document {
           <meta charSet="utf-8" />
           {/* Use minimum-scale=1 to enable GPU rasterization */}
           <meta
-            name="viewport"
+            name='viewport'
             content={
               'user-scalable=0, initial-scale=1, ' +
               'minimum-scale=1, width=device-width, height=device-height'
@@ -41,7 +41,7 @@ class MyDocument extends Document {
 
 MyDocument.getInitialProps = (ctx) => {
   const context = getContext();
-  const page = ctx.renderPage(Component => props => (
+  const page = ctx.renderPage((Component) => (props) => (
     <JssProvider registry={context.sheetsRegistry} jss={context.jss}>
       <Component {...props} />
     </JssProvider>
@@ -52,7 +52,7 @@ MyDocument.getInitialProps = (ctx) => {
     stylesContext: context,
     styles: (
       <style
-        id="jss-server-side"
+        id='jss-server-side'
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: context.sheetsRegistry.toString() }}
       />

@@ -1,12 +1,12 @@
-const express = require('express');
-const morgan = require('morgan');
-const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser');
+import * as express from 'express';
+import * as morgan from 'morgan';
+import * as bodyParser from 'body-parser';
+import * as cookieParser from 'cookie-parser';
 
-const { setAuthCookies } = require('./middleware');
-const apiIndex = require('./routes');
-const { uiApp } = require('./ui-server-side');
-const { fileImport } = require('./db');
+import { setAuthCookies } from './middleware';
+import apiIndex from './routes';
+import { uiApp } from './ui-server-side';
+import { fileImport } from './db';
 
 const app = express();
 

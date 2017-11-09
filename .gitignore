@@ -6,3 +6,4 @@ vol
 .ash_history
 .next
 *.csv
+*.js

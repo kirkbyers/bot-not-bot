@@ -1,5 +1,6 @@
-import React from 'react';
-import fetch from 'isomorphic-unfetch';
+import * as fetch from 'isomorphic-unfetch';
+import * as React from 'react';
+
 import Grid from 'material-ui/Grid';
 import TextField from 'material-ui/TextField';
 import Typography from 'material-ui/Typography';
@@ -12,12 +13,12 @@ class RegisterForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleInputChange(event) {
+  public handleInputChange(event) {
     const { target } = event;
     this.setState(() => ({ email: target.value }));
   }
 
-  async handleSubmit(event) {
+  public async handleSubmit(event) {
     event.preventDefault();
     fetch('/api/login', {
       method: 'POST',
@@ -31,18 +32,18 @@ class RegisterForm extends React.Component {
     }, 5000);
   }
 
-  render() {
+  public render() {
     return (
-      <Grid container justify="center" alignContent="center">
+      <Grid container justify='center' alignContent='center'>
         <Grid item xs={10}>
           {!this.state.loginSent &&
             <Grid container>
               <Grid item xs={12}>
-                <Typography type="headline">Sign up to help us label data</Typography>
+                <Typography type='headline'>Sign up to help us label data</Typography>
                 <form onSubmit={this.handleSubmit}>
                   <TextField
-                    id="email"
-                    label="Email Address"
+                    id='email'
+                    label='Email Address'
                     value={this.state.email}
                     onChange={this.handleInputChange}
                     fullWidth
@@ -52,7 +53,7 @@ class RegisterForm extends React.Component {
             </Grid>
           }
           {this.state.loginSent &&
-            <Typography type="body1">
+            <Typography type='body1'>
               An email has been sent to {this.state.email} with a link to login
             </Typography>
           }

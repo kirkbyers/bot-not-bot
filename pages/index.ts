@@ -1,5 +1,5 @@
-import React from 'react';
-import fetch from 'isomorphic-unfetch';
+import * as React from 'react';
+import * as fetch from 'isomorphic-unfetch';
 
 import { DisplayTweetComponent, RegisterFormComponent } from '../components';
 
@@ -45,12 +45,11 @@ class IndexPage extends React.Component {
     const { data } = this.state;
     return (
       <div>
-        {status === 200 && <DisplayTweetComponent data={data} handleButtonClick={this.handleClassification} />}
-        {status !== 200 && <RegisterFormComponent />}
+        {status === 200 && <DisplayTweetComponent data={data;} handleButtonClick={this.handleClassification} />}
+{status !== 200 && />} as RegisterFormComponent
       </div>
     );
   }
 }
 
 export default IndexPage;
-
