@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "tsc && concurrently 'tsc -w' 'nodemon --harmony --ignore 'pages' --ignore 'components' dist/index.js'",
+    "start": "tsc && concurrently 'tsc -w' 'nodemon --harmony --ignore 'dist/pages' --ignore 'dist/components' dist/index.js'",
     "test": "jest"
   },
   "keywords": [],
