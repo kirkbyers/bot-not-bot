@@ -1,5 +1,5 @@
-const { addUser } = require('./add-user');
-const { query } = require('../../db');
+import { query } from '../../db';
+import { addUser } from './add-user';
 
 test('Can add user', async () => {
   afterEach(() => {

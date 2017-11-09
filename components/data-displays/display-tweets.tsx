@@ -5,7 +5,12 @@ import Grid from 'material-ui/Grid';
 import Paper from 'material-ui/Paper';
 import Typography from 'material-ui/Typography';
 
-const DisplayTweetComponent = (props) => {
+interface Props {
+  data: any;
+  handleButtonClick(buttonType: string): (event: React.MouseEvent<any>) => void;
+}
+
+const DisplayTweetComponent = (props: Props) => {
   const { data = {}, handleButtonClick } = props;
   return (
     <Paper elevation={4} style={{ padding: '24px' }}>

@@ -5,20 +5,25 @@ import Grid from 'material-ui/Grid';
 import TextField from 'material-ui/TextField';
 import Typography from 'material-ui/Typography';
 
-class RegisterForm extends React.Component {
-  constructor(props) {
+interface State {
+  email: string;
+  loginSent: boolean;
+}
+
+class RegisterForm extends React.Component<{}, State> {
+  constructor(props: {}) {
     super(props);
     this.state = { email: '', loginSent: false };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  public handleInputChange(event) {
+  public handleInputChange(event: React.ChangeEvent<{ value: string }>) {
     const { target } = event;
     this.setState(() => ({ email: target.value }));
   }
 
-  public async handleSubmit(event) {
+  public async handleSubmit(event: React.FormEvent<{}>) {
     event.preventDefault();
     fetch('/api/login', {
       method: 'POST',

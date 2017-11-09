@@ -1,6 +1,6 @@
 import getClassificationOptions from './get-classification-options';
 
-function dataToDoc(dataEntry: any, processedId: number) {
+function dataToDoc(dataEntry: any, processedId?: number) {
   const optionsArray = getClassificationOptions();
   const addFields: any = {
     responses: {},

@@ -2,7 +2,7 @@ import { Collection, MongoClient } from 'mongodb';
 
 const connectionUrl = process.env.MONGO_CONNECTION || 'mongodb://bonb-mongo:27017/bonb';
 
-async function query(collectionName = 'test', dbQuery: (collection: Collection) => Promise<any>) {
+async function query(collectionName = 'test', dbQuery: (collection: Collection) => Promise<any> | void) {
   try {
     const db = await MongoClient.connect(connectionUrl);
     const col = await db.collection(collectionName);

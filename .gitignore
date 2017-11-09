@@ -7,3 +7,4 @@ vol
 .next
 *.csv
 *.js
+dist

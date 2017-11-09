@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --harmony --ignore 'pages' --ignore 'components' index.js",
+    "start": "tsc && concurrently 'tsc -w' 'nodemon --harmony --ignore 'pages' --ignore 'components' dist/index.js'",
     "test": "jest"
   },
   "keywords": [],
@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.2",
+    "concurrently": "^3.5.0",
     "cookie-parser": "^1.4.3",
     "express": "^4.16.2",
     "fast-csv": "^2.4.1",

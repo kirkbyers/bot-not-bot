@@ -1,10 +1,19 @@
-import * as React from 'react';
 import * as fetch from 'isomorphic-unfetch';
+import * as React from 'react';
 
 import { DisplayTweetComponent, RegisterFormComponent } from '../components';
 
-class IndexPage extends React.Component {
-  static async getInitialProps({ req }) {
+interface Props {
+  data: any;
+  status: number;
+}
+
+interface State {
+  data: any;
+}
+
+class IndexPage extends React.Component<Props, State> {
+  public static async getInitialProps({ req }: { req: any }) {
     const query = req.query.auth ? `?auth=${req.query.auth}` : '';
     const response = await fetch(`${req.protocol}://${req.get('Host')}/api/serve${query}`, {
       credentials: 'include',
@@ -21,13 +30,13 @@ class IndexPage extends React.Component {
     };
   }
 
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
     this.state = { data: props.data };
     this.handleClassification = this.handleClassification.bind(this);
   }
 
-  handleClassification(classificationString) {
+  public handleClassification(classificationString: string) {
     return async () => {
       const result = await fetch(`/api/${this.state.data.processedId}`, {
         method: 'POST',
@@ -40,13 +49,13 @@ class IndexPage extends React.Component {
     };
   }
 
-  render() {
+  public render() {
     const { status } = this.props;
     const { data } = this.state;
     return (
       <div>
-        {status === 200 && <DisplayTweetComponent data={data;} handleButtonClick={this.handleClassification} />}
-{status !== 200 && />} as RegisterFormComponent
+        {status === 200 && <DisplayTweetComponent data={data} handleButtonClick={this.handleClassification} />}
+        {status !== 200 && <RegisterFormComponent />}
       </div>
     );
   }
