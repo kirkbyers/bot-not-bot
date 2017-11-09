@@ -1,8 +1,8 @@
-const express = require('express');
+import * as express from 'express';
 
-const data = require('./data');
-const metadata = require('./metadata');
-const users = require('./users');
+import data from './data';
+import metadata from './metadata';
+import users from './users';
 
 const router = express.Router();
 
@@ -10,4 +10,4 @@ router.use('/api', metadata);
 router.use('/api', users);
 router.use('/api', data);
 
-module.exports = router;
+export default router;

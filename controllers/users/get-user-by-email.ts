@@ -1,12 +1,12 @@
-const { query } = require('../../db');
+import { query } from '../../db';
 
-async function getUserByEmail(email) {
+async function getUserByEmail(email: string) {
   try {
-    const user = await query('users', async col => col.findOne({ email }));
+    const user = await query('users', async (col) => col.findOne({ email }));
     return user;
   } catch (err) {
     return { error: err };
   }
 }
 
-module.exports = getUserByEmail;
+export default getUserByEmail;

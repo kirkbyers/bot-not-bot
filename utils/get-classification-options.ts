@@ -4,4 +4,4 @@ function getClassificationOptions() {
   return optionsArray;
 }
 
-module.exports = getClassificationOptions;
+export default getClassificationOptions;

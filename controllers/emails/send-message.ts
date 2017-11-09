@@ -1,7 +1,9 @@
-const { createTransport } = require('./create-transport');
+import { Transporter } from 'nodemailer';
 
-async function sendMessage(to, subject, message) {
-  const transporter = await createTransport();
+import { createTransport } from './create-transport';
+
+async function sendMessage(to: string, subject: string, message: string) {
+  const transporter: any = await createTransport();
   if (transporter.error) {
     return { error: transporter.error };
   }
@@ -20,6 +22,6 @@ async function sendMessage(to, subject, message) {
   }
 }
 
-module.exports = {
+export {
   sendMessage,
 };

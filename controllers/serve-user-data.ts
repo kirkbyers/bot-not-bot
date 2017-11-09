@@ -1,11 +1,11 @@
-const { getDataCount, getDataByProcessedId } = require('./data');
-const { getUserByEmail } = require('./users');
+import { getDataByProcessedId, getDataCount } from './data';
+import { getUserByEmail } from './users';
 
-async function serveUserData(email) {
+async function serveUserData(email: string) {
   const user = await getUserByEmail(email);
   const dataCount = await getDataCount('bonb');
   const findProcessedId = (user.startingIndex + user.responsesCount) % dataCount;
   return user.responsesCount < dataCount ? getDataByProcessedId(findProcessedId) : null;
 }
 
-module.exports = serveUserData;
+export default serveUserData;

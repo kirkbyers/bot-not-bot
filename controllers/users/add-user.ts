@@ -1,19 +1,19 @@
-const { createUserToken } = require('./create-user-token');
-const { sendMessage } = require('../emails');
-const { query } = require('../../db');
-const { randomInt } = require('../../utils');
+import { query } from '../../db';
+import { randomInt } from '../../utils';
+import { sendMessage } from '../emails';
+import { createUserToken } from './create-user-token';
 
-async function addUser(userEmail) {
-  const user = {
+async function addUser(userEmail: string) {
+  const user: any = {
     email: userEmail,
   };
-  const dataDocCount = await query('bonb', async col => col.count());
+  const dataDocCount = await query('bonb', async (col) => col.count({}));
   const token = await createUserToken(user);
   user.token = token;
   user.responses = {};
   user.responsesCount = 0;
   user.startingIndex = randomInt(0, dataDocCount);
-  await query('users', col => col.insertOne(user));
+  await query('users', (col) => col.insertOne(user));
   const url = encodeURI(`${process.env.BASE_URL}?auth=${token}`);
   await sendMessage(userEmail, 'Help Us Classify Data', `
   <p>Howdy!</p>
@@ -22,6 +22,6 @@ async function addUser(userEmail) {
   return true;
 }
 
-module.exports = {
+export {
   addUser,
 };

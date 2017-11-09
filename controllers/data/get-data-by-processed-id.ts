@@ -1,7 +1,7 @@
-const { query } = require('../../db');
+import { query } from '../../db';
 
-async function getDataByProcessedId(processedId) {
-  return query('bonb', async col => col.findOne({ processedId: Number(processedId) }));
+async function getDataByProcessedId(processedId: number | string) {
+  return query('bonb', async (col) => col.findOne({ processedId: Number(processedId) }));
 }
 
-module.exports = getDataByProcessedId;
+export default getDataByProcessedId;

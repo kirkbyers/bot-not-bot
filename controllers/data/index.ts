@@ -1,9 +1,9 @@
-const getDataByProcessedId = require('./get-data-by-processed-id');
-const getDataCount = require('./get-data-count');
-const importFromCsv = require('./import-from-csv');
-const insertData = require('./insert-data');
+import getDataByProcessedId from './get-data-by-processed-id';
+import getDataCount from './get-data-count';
+import importFromCsv from './import-from-csv';
+import insertData from './insert-data';
 
-module.exports = {
+export {
   getDataByProcessedId,
   getDataCount,
   importFromCsv,

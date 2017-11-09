@@ -1,6 +1,6 @@
-const nodemailer = require('nodemailer');
+import * as nodemailer from 'nodemailer';
 
-async function createTransport() {
+async function createTransport(): Promise<nodemailer.Transporter | { error: any }> {
   try {
     const transport = await nodemailer.createTransport({
       service: 'gmail',
@@ -16,6 +16,6 @@ async function createTransport() {
   }
 }
 
-module.exports = {
+export {
   createTransport,
 };

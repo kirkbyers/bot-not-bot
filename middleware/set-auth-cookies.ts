@@ -1,6 +1,8 @@
-const { validateUserToken } = require('../controllers');
+import { RequestHandler } from 'express';
 
-function setAuthCookies(req, res, next) {
+import { validateUserToken } from '../controllers';
+
+const setAuthCookies: RequestHandler = (req, res, next) => {
   if (req.query.auth && !req.signedCookies.auth) {
     // TODO: verify auth token query param
     if (validateUserToken(req.query.auth)) {
@@ -9,6 +11,6 @@ function setAuthCookies(req, res, next) {
     }
   }
   next();
-}
+};
 
-module.exports = setAuthCookies;
+export default setAuthCookies;

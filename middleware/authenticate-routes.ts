@@ -1,7 +1,10 @@
-const jwt = require('jsonwebtoken');
-const { validateUserToken } = require('../controllers');
+import { NextFunction, RequestHandler, Response } from 'express';
+import * as jwt from 'jsonwebtoken';
 
-function authenticateRoute(req, res, next) {
+import { validateUserToken } from '../controllers';
+import { Request } from '../models/extended-request';
+
+const authenticateRoute = (req: Request, res: Response, next: NextFunction) => {
   if (!req.signedCookies.auth && !req.headers.auth) {
     return res.status(401).json('Login needed');
   }
@@ -13,6 +16,6 @@ function authenticateRoute(req, res, next) {
   }
   res.clearCookie('auth');
   return res.status(401).send('Login outdated');
-}
+};
 
-module.exports = authenticateRoute;
+export default authenticateRoute;

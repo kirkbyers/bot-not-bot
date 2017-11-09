@@ -1,15 +1,15 @@
-const express = require('express');
+import * as express from 'express';
 
-const { query } = require('../db');
-const { addUser, sendMessage } = require('../controllers');
-const { createLoginLink } = require('../utils');
+import { addUser, sendMessage } from '../controllers';
+import { query } from '../db';
+import { createLoginLink } from '../utils';
 
 const router = express.Router();
 
 router.post('/login', async (req, res) => {
   const { email } = req.body;
   try {
-    const user = await query('users', col => col.findOne({ email }));
+    const user = await query('users', (col) => col.findOne({ email }));
     const url = createLoginLink(user.token);
     await sendMessage(email, 'Login Magic Link', `
   <p>Howdy</p>
@@ -22,4 +22,4 @@ router.post('/login', async (req, res) => {
   res.send('Login email sent');
 });
 
-module.exports = router;
+export default router;

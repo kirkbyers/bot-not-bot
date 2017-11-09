@@ -1,4 +1,4 @@
-const { sendMessage } = require('../emails');
+import { sendMessage } from './send-message';
 
 test('Mail transport test', async () => {
   beforeEach(() => {

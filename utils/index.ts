@@ -1,11 +1,4 @@
-const createLoginLink = require('./create-login-link');
-const dataToDoc = require('./data-to-doc');
-const getClassificationOptions = require('./get-classification-options');
-const randomInt = require('./rand-int');
-
-module.exports = {
-  createLoginLink,
-  dataToDoc,
-  getClassificationOptions,
-  randomInt,
-};
+export { default as createLoginLink } from './create-login-link';
+export { default as dataToDoc } from './data-to-doc';
+export { default as getClassificationOptions } from './get-classification-options';
+export { default as randomInt } from './rand-int';

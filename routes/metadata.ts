@@ -1,7 +1,7 @@
-const express = require('express');
+import * as express from 'express';
 
-const { authenticateRoutes } = require('../middleware');
-const { getClassificationOptions } = require('../utils');
+import { authenticateRoutes } from '../middleware';
+import { getClassificationOptions } from '../utils';
 
 const router = express.Router();
 
@@ -11,4 +11,4 @@ router.get('/metadata', authenticateRoutes, (req, res) => {
   });
 });
 
-module.exports = router;
+export default router;

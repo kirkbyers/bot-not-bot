@@ -1,9 +1,9 @@
-const fastCsv = require('fast-csv');
+import * as fastCsv from 'fast-csv';
 
-const insertData = require('./insert-data');
+import insertData from './insert-data';
 
-async function importFromCsv(pathToCsv) {
-  const dataArray = [];
+async function importFromCsv(pathToCsv: string) {
+  const dataArray: any[] = [];
   fastCsv.fromPath(pathToCsv, {
     headers: true,
   })
@@ -12,7 +12,7 @@ async function importFromCsv(pathToCsv) {
     })
     .on('end', () => {
       insertData(dataArray, pathToCsv)
-        .then((res) => {
+        .then((res: any) => {
           if (res.err) {
             console.log(`insert err: ${res.err}`);
           } else {
@@ -22,4 +22,4 @@ async function importFromCsv(pathToCsv) {
     });
 }
 
-module.exports = importFromCsv;
+export default importFromCsv;

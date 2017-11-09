@@ -1,11 +1,12 @@
-const express = require('express');
+import * as express from 'express';
 
-const { serveUserData, recordUserResponse } = require('../controllers');
-const { authenticateRoutes } = require('../middleware');
+import { recordUserResponse, serveUserData } from '../controllers';
+import { authenticateRoutes } from '../middleware';
+import { Request } from '../models/extended-request';
 
 const router = express.Router();
 
-router.get('/serve', authenticateRoutes, async (req, res) => {
+router.get('/serve', authenticateRoutes, async (req: Request, res) => {
   try {
     const data = await serveUserData(req.user.email);
     res.json(data);
@@ -15,10 +16,10 @@ router.get('/serve', authenticateRoutes, async (req, res) => {
   }
 });
 
-router.post('/:processedId', authenticateRoutes, async (req, res) => {
+router.post('/:processedId', authenticateRoutes, async (req: Request, res) => {
   await recordUserResponse(req.params.processedId, req.user.email, req.body.response);
   const newData = await serveUserData(req.user.email);
   res.json(newData);
 });
 
-module.exports = router;
+export default router;

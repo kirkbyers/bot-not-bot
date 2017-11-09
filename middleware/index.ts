@@ -1,7 +1,2 @@
-const authenticateRoutes = require('./authenticate-routes');
-const setAuthCookies = require('./set-auth-cookies');
-
-module.exports = {
-  authenticateRoutes,
-  setAuthCookies,
-};
+export { default as authenticateRoutes } from './authenticate-routes';
+export { default as setAuthCookies } from './set-auth-cookies';

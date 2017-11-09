@@ -4,4 +4,4 @@ import * as Next from 'next';
 // const dev = process.env.NODE_ENV !== 'production';
 const uiApp = Next({ dev: true });
 
-module.exports = { uiApp };
+export { uiApp };

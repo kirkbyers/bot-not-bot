@@ -1,7 +1,7 @@
-const query = require('../../db/query');
+import query from '../../db/query';
 
-async function getDataCount(collection) {
-  return query(collection, async col => col.count());
+async function getDataCount(collectionString: string) {
+  return query(collectionString, async (col) => col.count({}));
 }
 
-module.exports = getDataCount;
+export default getDataCount;

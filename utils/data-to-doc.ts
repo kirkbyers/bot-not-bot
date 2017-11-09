@@ -1,8 +1,8 @@
-const getClassificationOptions = require('./get-classification-options');
+import getClassificationOptions from './get-classification-options';
 
-function dataToDoc(dataEntry, processedId) {
+function dataToDoc(dataEntry: any, processedId: number) {
   const optionsArray = getClassificationOptions();
-  const addFields = {
+  const addFields: any = {
     responses: {},
   };
   optionsArray.forEach((option) => {
@@ -14,4 +14,4 @@ function dataToDoc(dataEntry, processedId) {
   return Object.assign({}, dataEntry, addFields);
 }
 
-module.exports = dataToDoc;
+export default dataToDoc;

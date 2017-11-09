@@ -1,7 +1,2 @@
-const { createTransport } = require('./create-transport');
-const { sendMessage } = require('./send-message');
-
-module.exports = {
-  createTransport,
-  sendMessage,
-};
+export { createTransport } from './create-transport';
+export { sendMessage } from './send-message';

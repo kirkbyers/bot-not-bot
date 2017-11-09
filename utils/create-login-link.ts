@@ -1,6 +1,6 @@
-function createLoginLink(token) {
+function createLoginLink(token: string) {
   const url = encodeURI(`${process.env.BASE_URL}?auth=${token}`);
   return url;
 }
 
-module.exports = createLoginLink;
+export default createLoginLink;

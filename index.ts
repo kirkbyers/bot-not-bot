@@ -1,12 +1,12 @@
-import * as express from 'express';
-import * as morgan from 'morgan';
 import * as bodyParser from 'body-parser';
 import * as cookieParser from 'cookie-parser';
+import * as express from 'express';
+import * as morgan from 'morgan';
 
+import { fileImport } from './db';
 import { setAuthCookies } from './middleware';
 import apiIndex from './routes';
 import { uiApp } from './ui-server-side';
-import { fileImport } from './db';
 
 const app = express();
 
@@ -44,8 +44,8 @@ uiApp.prepare()
 
 // Add records to DB
 if (process.env.IMPORT_FILE_PATH) {
-  fileImport(process.env.IMPORT_FILE_PATH)
-    .catch(err => console.log(err));
+  fileImport(process.env.IMPORT_FILE_PATH as string)
+    .catch((err) => console.log(err));
 }
 
 // Listen

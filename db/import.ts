@@ -1,7 +1,7 @@
 import importFromCsv from '../controllers/data/import-from-csv';
 import query from './query';
 
-async function importFile(fileName) {
+async function importFile(fileName: string) {
   const importRecord = await query('imports', async (col) => col.findOne({ fileName }));
   if (!importRecord) {
     await importFromCsv(fileName);
