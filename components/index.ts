@@ -1,3 +1,4 @@
+export { default as FullHeightComponent } from './full-height';
 export { default as RegisterFormComponent } from './register-form';
 
 export {

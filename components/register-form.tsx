@@ -1,6 +1,7 @@
 import * as fetch from 'isomorphic-unfetch';
 import * as React from 'react';
 
+import Button from 'material-ui/Button';
 import Grid from 'material-ui/Grid';
 import TextField from 'material-ui/TextField';
 import Typography from 'material-ui/Typography';
@@ -24,6 +25,9 @@ class RegisterForm extends React.Component<{}, State> {
   }
 
   public async handleSubmit(event: React.FormEvent<{}>) {
+    if (!this.state.email) {
+      return;
+    }
     event.preventDefault();
     fetch('/api/login', {
       method: 'POST',
@@ -49,6 +53,7 @@ class RegisterForm extends React.Component<{}, State> {
                   <TextField
                     id='email'
                     label='Email Address'
+                    type='email'
                     value={this.state.email}
                     onChange={this.handleInputChange}
                     fullWidth

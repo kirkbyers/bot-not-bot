@@ -1,7 +1,9 @@
 import * as fetch from 'isomorphic-unfetch';
 import * as React from 'react';
 
-import { DisplayTweetComponent, RegisterFormComponent } from '../components';
+import Router from 'next/router';
+
+import { DisplayTweetComponent, FullHeightComponent, RegisterFormComponent } from '../components';
 
 interface Props {
   data: any;
@@ -12,7 +14,7 @@ interface State {
   data: any;
 }
 
-class IndexPage extends React.Component<Props, State> {
+class LabelPage extends React.Component<Props, State> {
   public static async getInitialProps({ req }: { req: any }) {
     const query = req.query.auth ? `?auth=${req.query.auth}` : '';
     const response = await fetch(`${req.protocol}://${req.get('Host')}/api/serve${query}`, {
@@ -54,11 +56,13 @@ class IndexPage extends React.Component<Props, State> {
     const { data } = this.state;
     return (
       <div>
-        {status === 200 && <DisplayTweetComponent data={data} handleButtonClick={this.handleClassification} />}
-        {status !== 200 && <RegisterFormComponent />}
+        <FullHeightComponent centered heightPerc={100}>
+          {status === 200 && <DisplayTweetComponent data={data} handleButtonClick={this.handleClassification} />}
+          {status !== 200 && <RegisterFormComponent />}
+        </FullHeightComponent>
       </div>
     );
   }
 }
 
-export default IndexPage;
+export default LabelPage;
